@@ -426,7 +426,7 @@ Server.prototype = {
 			testedCapabilities.takesScreenshot = session.takeScreenshot().then(supported, unsupported);
 
 			// At least ios-driver 0.6.6-SNAPSHOT April 2014 does not support execute_async
-			testedCapabilities.supportsExecuteAsync = session.executeAsync('arguments[0](true);').catch(unsupported);
+			// testedCapabilities.supportsExecuteAsync = session.executeAsync('arguments[0](true);').catch(unsupported);
 
 			// Some additional, currently-non-standard capabilities are needed in order to know about supported
 			// features of a given platform
@@ -651,6 +651,7 @@ Server.prototype = {
 			};
 
 			// At least ios-driver 0.6.6-SNAPSHOT April 2014 will never complete a refresh call
+			/*
 			testedCapabilities.brokenRefresh = function () {
 				return session.get('about:blank?1').then(function () {
 					return new Promise(function (resolve, reject, progress, setCanceler) {
@@ -675,7 +676,7 @@ Server.prototype = {
 					});
 				}).catch(broken);
 			};
-
+			*/
 			if (capabilities.mouseEnabled) {
 				// At least ChromeDriver 2.9.248307 does not correctly emit the entire sequence of events that would
 				// normally occur during a double-click
